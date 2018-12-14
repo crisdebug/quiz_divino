@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity{
     private ArrayList<Pergunta> perguntas;
 
     private Button curr_correta;
-    private int acertos;
+    private int acertos =  0;
     private int erros;
     HashMap<Button, Integer> alternativas = new HashMap<>();
     int dia;
@@ -53,9 +53,9 @@ public class MainActivity extends AppCompatActivity{
 
     private void setarPergunta() {
         Pergunta actualPergunta = new Pergunta();
-        try {
+        if(perguntas.size() != 0){
             actualPergunta = perguntas.get(0);
-        }catch (Exception e){
+        }else{
             proxTela();
         }
 
