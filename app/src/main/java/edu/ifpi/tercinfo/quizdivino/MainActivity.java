@@ -1,5 +1,6 @@
 package edu.ifpi.tercinfo.quizdivino;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity{
 
     private Button curr_correta;
     private int acertos;
+    private int erros;
     HashMap<Button, Integer> alternativas = new HashMap<>();
 
     @Override
@@ -85,18 +87,23 @@ public class MainActivity extends AppCompatActivity{
                     msg.setTextColor(getResources().getColor(android.R.color.holo_green_light));
                     msg.setVisibility(View.VISIBLE);
                     acertos++;
+                    checkPontos();
                 }else if(alt_b == curr_correta){
                     alt_a.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
                     alt_c.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
                     msg.setText("Incorreta!");
                     msg.setTextColor(getResources().getColor(android.R.color.holo_red_light));
                     msg.setVisibility(View.VISIBLE);
+                    erros++;
+                    checkPontos();
                 }else{
                     alt_a.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
                     alt_b.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
                     msg.setText("Incorreta!");
                     msg.setTextColor(getResources().getColor(android.R.color.holo_red_light));
                     msg.setVisibility(View.VISIBLE);
+                    erros++;
+                    checkPontos();
                 }
                 proxPergunta();
             }
@@ -111,6 +118,8 @@ public class MainActivity extends AppCompatActivity{
                     msg.setText("Incorreta!");
                     msg.setTextColor(getResources().getColor(android.R.color.holo_red_light));
                     msg.setVisibility(View.VISIBLE);
+                    erros++;
+                    checkPontos();
                 }else if(alt_b == curr_correta){
                     alt_a.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
                     alt_c.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
@@ -118,12 +127,15 @@ public class MainActivity extends AppCompatActivity{
                     msg.setTextColor(getResources().getColor(android.R.color.holo_green_light));
                     msg.setVisibility(View.VISIBLE);
                     acertos++;
+                    checkPontos();
                 }else{
                     alt_a.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
                     alt_b.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
                     msg.setText("Incorreta!");
                     msg.setTextColor(getResources().getColor(android.R.color.holo_red_light));
                     msg.setVisibility(View.VISIBLE);
+                    erros++;
+                    checkPontos();
                 }
                 proxPergunta();
             }
@@ -138,13 +150,16 @@ public class MainActivity extends AppCompatActivity{
                     msg.setText("Incorreta!");
                     msg.setTextColor(getResources().getColor(android.R.color.holo_red_light));
                     msg.setVisibility(View.VISIBLE);
-
+                    erros++;
+                    checkPontos();
                 }else if(alt_b == curr_correta){
                     alt_a.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
                     alt_c.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
                     msg.setText("Incorreta!");
                     msg.setTextColor(getResources().getColor(android.R.color.holo_red_light));
                     msg.setVisibility(View.VISIBLE);
+                    erros++;
+                    checkPontos();
 
                 }else{
                     alt_a.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
@@ -153,6 +168,7 @@ public class MainActivity extends AppCompatActivity{
                     msg.setTextColor(getResources().getColor(android.R.color.holo_green_light));
                     msg.setVisibility(View.VISIBLE);
                     acertos++;
+                    checkPontos();
                 }
                 proxPergunta();
             }
@@ -179,5 +195,15 @@ public class MainActivity extends AppCompatActivity{
 
     }
 
-
+    private void checkPontos(){
+        if (acertos>=4){
+            Intent intent = new Intent(MainActivity.this, ResultActivity.class);
+            intent.putExtra("acertos", acertos);
+            startActivity(intent);
+        }else if(erros >= 2){
+            Intent intent = new Intent(MainActivity.this, ResultActivity.class);
+            intent.putExtra("erros", erros);
+            startActivity(intent);
+        }
+    }
 }
