@@ -196,13 +196,15 @@ public class MainActivity extends AppCompatActivity{
     }
 
     private void checkPontos(){
-        if (acertos>=4){
+        if (acertos==4){
             Intent intent = new Intent(MainActivity.this, ResultActivity.class);
             intent.putExtra("acertos", acertos);
+            Log.i("DATA", "acertos: "+acertos);
             startActivity(intent);
-        }else if(erros >= 2){
+        }else if(erros == 2){
             Intent intent = new Intent(MainActivity.this, ResultActivity.class);
             intent.putExtra("erros", erros);
+            Log.i("DATA", "Erros: "+erros);
             startActivity(intent);
         }
     }
