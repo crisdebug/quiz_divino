@@ -23,9 +23,21 @@ public class SplashScreenActivity extends AppCompatActivity {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
+                    int data = 0;
 
+                    Calendar calendar  = Calendar.getInstance();
+                    SimpleDateFormat mdFormart = new SimpleDateFormat("dd/MM/yyyy");
+                    String strDate = mdFormart.format(calendar.getTime());
+                    if(strDate.equals("18/12/2018")){
+                        data = 1;
+                    }else if(strDate.equals("19/12/2018")){
+                        data = 2;
+                    }else if (strDate.equals("20/12/2018")){
+                        data = 3;
+                    }
 
                     Intent intent = new Intent(SplashScreenActivity.this, DebugActivity.class);
+                    intent.putExtra("dia", data);
                     startActivity(intent);
                 }
             }, 3000);

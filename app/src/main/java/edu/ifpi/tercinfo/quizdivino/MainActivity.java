@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity{
     private int acertos;
     private int erros;
     HashMap<Button, Integer> alternativas = new HashMap<>();
+    int dia;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,8 @@ public class MainActivity extends AppCompatActivity{
         alt_a = findViewById(R.id.alt_a);
         alt_b = findViewById(R.id.alt_b);
         alt_c = findViewById(R.id.alt_c);
+
+        dia = getIntent().getIntExtra("dia", 0);
 
         perguntas = (ArrayList<Pergunta>) getIntent().getSerializableExtra("perguntas");
 
@@ -199,11 +202,13 @@ public class MainActivity extends AppCompatActivity{
         if (acertos==4){
             Intent intent = new Intent(MainActivity.this, ResultActivity.class);
             intent.putExtra("acertos", acertos);
+            intent.putExtra("dia", dia);
             Log.i("DATA", "acertos: "+acertos);
             startActivity(intent);
         }else if(erros == 2){
             Intent intent = new Intent(MainActivity.this, ResultActivity.class);
             intent.putExtra("erros", erros);
+            intent.putExtra("dia", dia);
             Log.i("DATA", "Erros: "+erros);
             startActivity(intent);
         }

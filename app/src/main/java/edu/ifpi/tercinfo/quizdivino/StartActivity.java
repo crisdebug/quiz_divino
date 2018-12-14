@@ -30,6 +30,7 @@ public class StartActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(StartActivity.this, MainActivity.class);
                 intent.putExtra("perguntas", perguntas);
+                intent.putExtra("dia", data);
                 startActivity(intent);
             }
         });
