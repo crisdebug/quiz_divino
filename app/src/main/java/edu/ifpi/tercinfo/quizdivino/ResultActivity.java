@@ -1,9 +1,8 @@
 package edu.ifpi.tercinfo.quizdivino;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -39,7 +38,7 @@ public class ResultActivity extends AppCompatActivity {
         }else{
             mensagem.setTextColor(getResources().getColor(android.R.color.holo_green_light));
             mensagem.setText("Parabéns!!");
-            mensagem.setText("Você acertou "+acertos+" de "+questoes);
+            msgAcertos.setText("Você acertou "+acertos+" de "+questoes);
         }
 
         reiniciar.setOnClickListener(new View.OnClickListener() {
