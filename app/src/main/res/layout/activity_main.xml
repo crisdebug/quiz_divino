@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/prot1"
+    android:background="@color/background"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="178dp"
+        android:layout_height="195dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:src="@drawable/image"
+        tools:srcCompat="@drawable/image" />
+
+    <TextView
+        android:id="@+id/pergunta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/img"
+
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/img"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="4dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tempo"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="276dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/alt_a"
+                android:layout_width="169dp"
+                android:layout_height="58.5dp"
+                android:layout_below="@id/pergunta"
+                android:layout_alignStart="@+id/pergunta"
+                android:layout_alignLeft="@id/pergunta"
+                android:layout_marginLeft="140dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="140dp"
+                android:layout_marginBottom="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/roundbutton"
+                android:padding="8dp"
+                android:text="Alternativa A"
+
+                />
+
+            <Button
+                android:id="@+id/alt_b"
+                android:layout_width="169dp"
+                android:layout_height="58.5dp"
+                android:layout_below="@id/pergunta"
+                android:layout_alignEnd="@+id/pergunta"
+                android:layout_alignRight="@id/pergunta"
+                android:layout_marginLeft="150dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="150dp"
+                android:layout_weight="1"
+                android:background="@drawable/roundbutton"
+                android:padding="8dp"
+                android:text="Alternativa B" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/alt_c"
+            android:layout_width="169dp"
+            android:layout_height="58.5dp"
+            android:layout_below="@id/pergunta"
+            android:layout_centerHorizontal="true"
+
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/roundbutton"
+            android:padding="8dp"
+            android:text="Alternativa C" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="41dp"
+        android:text="Correta!"
+        android:textColor="#ff99cc00"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/tempo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/msg"
+        android:layout_marginLeft="2dp"
+        android:layout_toRightOf="@id/msg"
+        android:text="3"
+        android:textSize="18sp" />
+
+
+</RelativeLayout>
