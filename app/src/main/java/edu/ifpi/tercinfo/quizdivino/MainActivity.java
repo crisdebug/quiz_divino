@@ -52,7 +52,12 @@ public class MainActivity extends AppCompatActivity{
     }
 
     private void setarPergunta() {
-        Pergunta actualPergunta  = perguntas.get(0);
+        Pergunta actualPergunta = new Pergunta();
+        try {
+            actualPergunta = perguntas.get(0);
+        }catch (Exception e){
+            proxTela();
+        }
 
         msg.setVisibility(View.GONE);
         tempo.setVisibility(View.GONE);
@@ -199,18 +204,22 @@ public class MainActivity extends AppCompatActivity{
     }
 
     private void checkPontos(){
-        if (acertos==4){
-            Intent intent = new Intent(MainActivity.this, ResultActivity.class);
-            intent.putExtra("acertos", acertos);
-            intent.putExtra("dia", dia);
-            Log.i("DATA", "acertos: "+acertos);
-            startActivity(intent);
-        }else if(erros == 2){
+
+        if(erros == 2){
             Intent intent = new Intent(MainActivity.this, ResultActivity.class);
             intent.putExtra("erros", erros);
             intent.putExtra("dia", dia);
             Log.i("DATA", "Erros: "+erros);
             startActivity(intent);
         }
+    }
+    private void proxTela(){
+        Intent intent = new Intent(MainActivity.this, ResultActivity.class);
+        int questoes = 5 - perguntas.size();
+        intent.putExtra("acertos", acertos);
+        intent.putExtra("dia", dia);
+        intent.putExtra("questoes", questoes);
+        Log.i("DATA", "acertos: "+acertos);
+        startActivity(intent);
     }
 }
