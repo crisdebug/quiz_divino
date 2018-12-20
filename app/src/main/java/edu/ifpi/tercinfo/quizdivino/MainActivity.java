@@ -58,129 +58,132 @@ public class MainActivity extends AppCompatActivity{
         }else{
             proxTela();
         }
+        try {
+            msg.setVisibility(View.GONE);
+            tempo.setVisibility(View.GONE);
+            pergunta.setText(actualPergunta.getPergunta());
+            alt_a.setText(actualPergunta.getAlternativas()[0]);
+            alt_b.setText(actualPergunta.getAlternativas()[1]);
+            alt_c.setText(actualPergunta.getAlternativas()[2]);
+            alt_a.setBackgroundColor(getResources().getColor(android.R.color.holo_blue_light));
+            alt_b.setBackgroundColor(getResources().getColor(android.R.color.holo_blue_light));
+            alt_c.setBackgroundColor(getResources().getColor(android.R.color.holo_blue_light));
 
-        msg.setVisibility(View.GONE);
-        tempo.setVisibility(View.GONE);
-        pergunta.setText(actualPergunta.getPergunta());
-        alt_a.setText(actualPergunta.getAlternativas()[0]);
-        alt_b.setText(actualPergunta.getAlternativas()[1]);
-        alt_c.setText(actualPergunta.getAlternativas()[2]);
-        alt_a.setBackgroundColor(getResources().getColor(android.R.color.holo_blue_light));
-        alt_b.setBackgroundColor(getResources().getColor(android.R.color.holo_blue_light));
-        alt_c.setBackgroundColor(getResources().getColor(android.R.color.holo_blue_light));
+            alternativas.put(alt_a, 0);
+            alternativas.put(alt_b, 1);
+            alternativas.put(alt_c, 2);
+            switch (actualPergunta.getCorreta()) {
+                case 0:
+                    curr_correta = alt_a;
+                    break;
+                case 1:
+                    curr_correta = alt_b;
+                    break;
+                case 2:
+                    curr_correta = alt_c;
+                    break;
 
-        alternativas.put(alt_a,0);
-        alternativas.put(alt_b,1);
-        alternativas.put(alt_c,2);
-        switch (actualPergunta.getCorreta()){
-            case 0:
-                curr_correta = alt_a;
-                break;
-            case  1:
-                curr_correta = alt_b;
-                break;
-            case 2:
-                curr_correta = alt_c;
-                break;
+            }
+            alt_a.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    curr_correta.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
+                    if (alt_a == curr_correta) {
+                        alt_b.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
+                        alt_c.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
+                        msg.setText("Correta!");
+                        msg.setTextColor(getResources().getColor(android.R.color.holo_green_light));
+                        msg.setVisibility(View.VISIBLE);
+                        acertos++;
+                        checkPontos();
+                    } else if (alt_b == curr_correta) {
+                        alt_a.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
+                        alt_c.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
+                        msg.setText("Incorreta!");
+                        msg.setTextColor(getResources().getColor(android.R.color.holo_red_light));
+                        msg.setVisibility(View.VISIBLE);
+                        erros++;
+                        checkPontos();
+                    } else {
+                        alt_a.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
+                        alt_b.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
+                        msg.setText("Incorreta!");
+                        msg.setTextColor(getResources().getColor(android.R.color.holo_red_light));
+                        msg.setVisibility(View.VISIBLE);
+                        erros++;
+                        checkPontos();
+                    }
+                    proxPergunta();
+                }
+            });
+            alt_b.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    curr_correta.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
+                    if (alt_a == curr_correta) {
+                        alt_b.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
+                        alt_c.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
+                        msg.setText("Incorreta!");
+                        msg.setTextColor(getResources().getColor(android.R.color.holo_red_light));
+                        msg.setVisibility(View.VISIBLE);
+                        erros++;
+                        checkPontos();
+                    } else if (alt_b == curr_correta) {
+                        alt_a.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
+                        alt_c.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
+                        msg.setText("Correta!");
+                        msg.setTextColor(getResources().getColor(android.R.color.holo_green_light));
+                        msg.setVisibility(View.VISIBLE);
+                        acertos++;
+                        checkPontos();
+                    } else {
+                        alt_a.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
+                        alt_b.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
+                        msg.setText("Incorreta!");
+                        msg.setTextColor(getResources().getColor(android.R.color.holo_red_light));
+                        msg.setVisibility(View.VISIBLE);
+                        erros++;
+                        checkPontos();
+                    }
+                    proxPergunta();
+                }
+            });
+            alt_c.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    curr_correta.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
+                    if (alt_a == curr_correta) {
+                        alt_b.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
+                        alt_c.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
+                        msg.setText("Incorreta!");
+                        msg.setTextColor(getResources().getColor(android.R.color.holo_red_light));
+                        msg.setVisibility(View.VISIBLE);
+                        erros++;
+                        checkPontos();
+                    } else if (alt_b == curr_correta) {
+                        alt_a.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
+                        alt_c.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
+                        msg.setText("Incorreta!");
+                        msg.setTextColor(getResources().getColor(android.R.color.holo_red_light));
+                        msg.setVisibility(View.VISIBLE);
+                        erros++;
+                        checkPontos();
 
+                    } else {
+                        alt_a.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
+                        alt_b.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
+                        msg.setText("Correta!");
+                        msg.setTextColor(getResources().getColor(android.R.color.holo_green_light));
+                        msg.setVisibility(View.VISIBLE);
+                        acertos++;
+                        checkPontos();
+                    }
+                    proxPergunta();
+                }
+            });
+        }catch (Exception e){
+            proxTela();
         }
-        alt_a.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                curr_correta.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
-                if(alt_a == curr_correta){
-                    alt_b.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
-                    alt_c.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
-                    msg.setText("Correta!");
-                    msg.setTextColor(getResources().getColor(android.R.color.holo_green_light));
-                    msg.setVisibility(View.VISIBLE);
-                    acertos++;
-                    checkPontos();
-                }else if(alt_b == curr_correta){
-                    alt_a.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
-                    alt_c.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
-                    msg.setText("Incorreta!");
-                    msg.setTextColor(getResources().getColor(android.R.color.holo_red_light));
-                    msg.setVisibility(View.VISIBLE);
-                    erros++;
-                    checkPontos();
-                }else{
-                    alt_a.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
-                    alt_b.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
-                    msg.setText("Incorreta!");
-                    msg.setTextColor(getResources().getColor(android.R.color.holo_red_light));
-                    msg.setVisibility(View.VISIBLE);
-                    erros++;
-                    checkPontos();
-                }
-                proxPergunta();
-            }
-        });
-        alt_b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                curr_correta.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
-                if(alt_a == curr_correta){
-                    alt_b.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
-                    alt_c.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
-                    msg.setText("Incorreta!");
-                    msg.setTextColor(getResources().getColor(android.R.color.holo_red_light));
-                    msg.setVisibility(View.VISIBLE);
-                    erros++;
-                    checkPontos();
-                }else if(alt_b == curr_correta){
-                    alt_a.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
-                    alt_c.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
-                    msg.setText("Correta!");
-                    msg.setTextColor(getResources().getColor(android.R.color.holo_green_light));
-                    msg.setVisibility(View.VISIBLE);
-                    acertos++;
-                    checkPontos();
-                }else{
-                    alt_a.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
-                    alt_b.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
-                    msg.setText("Incorreta!");
-                    msg.setTextColor(getResources().getColor(android.R.color.holo_red_light));
-                    msg.setVisibility(View.VISIBLE);
-                    erros++;
-                    checkPontos();
-                }
-                proxPergunta();
-            }
-        });
-        alt_c.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                curr_correta.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
-                if(alt_a == curr_correta){
-                    alt_b.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
-                    alt_c.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
-                    msg.setText("Incorreta!");
-                    msg.setTextColor(getResources().getColor(android.R.color.holo_red_light));
-                    msg.setVisibility(View.VISIBLE);
-                    erros++;
-                    checkPontos();
-                }else if(alt_b == curr_correta){
-                    alt_a.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
-                    alt_c.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
-                    msg.setText("Incorreta!");
-                    msg.setTextColor(getResources().getColor(android.R.color.holo_red_light));
-                    msg.setVisibility(View.VISIBLE);
-                    erros++;
-                    checkPontos();
-
-                }else{
-                    alt_a.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
-                    alt_b.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
-                    msg.setText("Correta!");
-                    msg.setTextColor(getResources().getColor(android.R.color.holo_green_light));
-                    msg.setVisibility(View.VISIBLE);
-                    acertos++;
-                    checkPontos();
-                }
-                proxPergunta();
-            }
-        });
     }
 
     private void proxPergunta() {
@@ -215,11 +218,9 @@ public class MainActivity extends AppCompatActivity{
     }
     private void proxTela(){
         Intent intent = new Intent(MainActivity.this, ResultActivity.class);
-        int questoes = 5 - perguntas.size();
         intent.putExtra("acertos", acertos);
+        intent.putExtra("questoes", 5 - perguntas.size());
         intent.putExtra("dia", dia);
-        intent.putExtra("questoes", questoes);
-        Log.i("DATA", "acertos: "+acertos);
         startActivity(intent);
     }
 }

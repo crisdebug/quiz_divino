@@ -44,7 +44,7 @@
             <Button
                 android:id="@+id/alt_a"
                 android:layout_width="169dp"
-                android:layout_height="58.5dp"
+                android:layout_height="wrap_content"
                 android:layout_below="@id/pergunta"
                 android:layout_alignStart="@+id/pergunta"
                 android:layout_alignLeft="@id/pergunta"
@@ -62,7 +62,7 @@
             <Button
                 android:id="@+id/alt_b"
                 android:layout_width="169dp"
-                android:layout_height="58.5dp"
+                android:layout_height="wrap_content"
                 android:layout_below="@id/pergunta"
                 android:layout_alignEnd="@+id/pergunta"
                 android:layout_alignRight="@id/pergunta"
@@ -78,7 +78,7 @@
         <Button
             android:id="@+id/alt_c"
             android:layout_width="169dp"
-            android:layout_height="58.5dp"
+            android:layout_height="wrap_content"
             android:layout_below="@id/pergunta"
             android:layout_centerHorizontal="true"
 
@@ -99,7 +99,7 @@
         android:layout_marginTop="41dp"
         android:text="Correta!"
         android:textColor="#ff99cc00"
-        android:textSize="24sp" />
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/tempo"
